@@ -1,8 +1,11 @@
 package com.kodilla.library.controller;
 
 import com.kodilla.library.domain.BookDto;
+import com.kodilla.library.domain.CopyDto;
 import com.kodilla.library.mapper.BookMapper;
+import com.kodilla.library.mapper.CopyMapper;
 import com.kodilla.library.service.DbServiceBook;
+import com.kodilla.library.service.DbServiceCopy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,12 @@ public class BookController {
 
     @Autowired
     private BookMapper bookMapper;
+
+    @Autowired
+    private DbServiceCopy dbServiceCopy;
+
+    @Autowired
+    private CopyMapper copyMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "getBooks")
     public List<BookDto> getBooks() {
@@ -40,7 +49,8 @@ public class BookController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createBook", consumes = APPLICATION_JSON_VALUE)
-    public void createBook(@RequestBody BookDto bookDto) {
+    public void createBook(@RequestBody BookDto bookDto, @RequestBody CopyDto copyDto) {
         dbServiceBook.saveBook(bookMapper.mapToBook(bookDto));
+        dbServiceCopy.saveCopy(copyMapper.mapToCopy(copyDto));
     }
 }

@@ -22,7 +22,7 @@ public class BookRepositoryTest {
     @Test
     public void testBookRepositorySave() {
         //Given
-        Book book = new Book(1L,"Potop", "Henryk Sienkiewicz", 2000);
+        Book book = new Book("Potop", "Henryk Sienkiewicz", 2000);
 
         //When
         bookRepository.save(book);
@@ -39,9 +39,9 @@ public class BookRepositoryTest {
     @Test
     public void testBookSaveWithCopies() {
         //Given
-        Book book = new Book(1L, "Potop", "Henryk Sienkiewicz", 2000);
-        Copy copy1 = new Copy(1L, "In library");
-        Copy copy2 = new Copy(2L, "Unloan");
+        Book book = new Book("Potop", "Henryk Sienkiewicz", 2000);
+        Copy copy1 = new Copy("In library");
+        Copy copy2 = new Copy("Unloan");
         book.getCopies().add(copy1);
         book.getCopies().add(copy2);
         copy1.setBook(book);

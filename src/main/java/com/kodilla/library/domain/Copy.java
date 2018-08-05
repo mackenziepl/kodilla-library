@@ -13,8 +13,7 @@ public class Copy {
 
     public Copy() {}
 
-    public Copy(Long id, String status) {
-        this.id = id;
+    public Copy(String status) {
         this.status = status;
     }
 

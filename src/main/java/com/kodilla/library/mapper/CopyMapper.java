@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class CopyMapper {
     public Copy mapToCopy(final CopyDto copyDto) {
         return new Copy(
-                copyDto.getId(),
                 copyDto.getStatus());
     }
 

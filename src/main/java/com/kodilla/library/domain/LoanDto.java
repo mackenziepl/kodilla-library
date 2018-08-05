@@ -1,26 +1,20 @@
 package com.kodilla.library.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "LOANS")
-public class Loan {
-
+public class LoanDto {
     private Long id;
     private Copy copy;
     private Reader reader;
     private LocalDate loanOfDate = LocalDate.now();
     private LocalDate returnOfDate;
 
-    public Loan() {
+    public LoanDto(Long id, LocalDate loanOfDate, LocalDate returnOfDate) {
+        this.id = id;
+        this.loanOfDate = loanOfDate;
+        this.returnOfDate = returnOfDate;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
     public Long getId() {
         return id;
     }
@@ -29,8 +23,6 @@ public class Loan {
         this.id = id;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_COPY")
     public Copy getCopy() {
         return copy;
     }
@@ -39,8 +31,6 @@ public class Loan {
         this.copy = copy;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID_READER")
     public Reader getReader() {
         return reader;
     }
@@ -49,8 +39,6 @@ public class Loan {
         this.reader = reader;
     }
 
-    @NotNull
-    @Column(name = "LOAN_OF_DATE")
     public LocalDate getLoanOfDate() {
         return loanOfDate;
     }
@@ -59,7 +47,6 @@ public class Loan {
         this.loanOfDate = loanOfDate;
     }
 
-    @Column(name = "RETURN_OF_DATE")
     public LocalDate getReturnOfDate() {
         return returnOfDate;
     }
@@ -68,22 +55,3 @@ public class Loan {
         this.returnOfDate = returnOfDate;
     }
 }
-
-//@Getter
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@Entity(name = "LOANS")
-//public class Loan {
-//    @Column(name = "ID_COPY")
-//    private Long idCopy;
-//
-//    @Column(name = "ID_READER")
-//    private Long idReader;
-//
-//    @NotNull
-//    @Column(name = "LOAN_OF_DATE")
-//    private LocalDate loanOfDate;
-//
-//    @Column(name = "RETURN_OF_DATE")
-//    private LocalDate returnOfDate;
-//}

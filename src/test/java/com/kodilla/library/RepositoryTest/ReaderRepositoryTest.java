@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 
@@ -24,7 +23,7 @@ public class ReaderRepositoryTest {
     @Test
     public void testReaderRepositorySave() {
         //Given
-        Reader reader = new Reader(1L,"James", "Bond", LocalDate.of(2018, 06, 07));
+        Reader reader = new Reader("James", "Bond");
 
         //When
         readerRepository.save(reader);

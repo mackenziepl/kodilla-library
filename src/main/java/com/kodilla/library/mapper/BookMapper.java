@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class BookMapper {
     public Book mapToBook(final BookDto bookDto) {
         return new Book(
-                bookDto.getId(),
                 bookDto.getTitle(),
                 bookDto.getAuthor(),
                 bookDto.getYearOfPublication());

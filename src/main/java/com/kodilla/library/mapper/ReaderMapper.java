@@ -11,10 +11,8 @@ import java.util.stream.Collectors;
 public class ReaderMapper {
     public Reader mapToReader(final ReaderDto readerDto) {
         return new Reader(
-                readerDto.getId(),
                 readerDto.getName(),
-                readerDto.getSurname(),
-                readerDto.getDateOfCardInsertion());
+                readerDto.getSurname());
     }
 
     public ReaderDto mapToReaderDto(final Reader reader) {

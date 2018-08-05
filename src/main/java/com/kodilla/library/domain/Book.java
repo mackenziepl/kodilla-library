@@ -17,8 +17,7 @@ public class Book {
 
     public Book() {}
 
-    public Book(Long id, String title, String author, Integer yearOfPublication) {
-        this.id = id;
+    public Book(String title, String author, Integer yearOfPublication) {
         this.title = title;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
