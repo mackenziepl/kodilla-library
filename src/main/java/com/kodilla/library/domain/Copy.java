@@ -10,11 +10,14 @@ public class Copy {
     private Long id;
     private String status;
     private Book book;
+    private String title;
 
     public Copy() {}
 
-    public Copy(String status) {
+    public Copy(Long id, String status, String title) {
+        this.id = id;
         this.status = status;
+        this.title = title;
     }
 
     @Id
@@ -46,6 +49,15 @@ public class Copy {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Transient
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
 

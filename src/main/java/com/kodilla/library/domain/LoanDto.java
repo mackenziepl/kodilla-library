@@ -4,15 +4,21 @@ import java.time.LocalDate;
 
 public class LoanDto {
     private Long id;
-    private Copy copy;
-    private Reader reader;
+    private CopyDto copyDto;
+    private ReaderDto readerDto;
+    private Long id_copy;
+    private Long id_reader;
     private LocalDate loanOfDate = LocalDate.now();
     private LocalDate returnOfDate;
 
-    public LoanDto(Long id, LocalDate loanOfDate, LocalDate returnOfDate) {
+    public LoanDto() {}
+
+    public LoanDto(Long id, Long id_copy, Long id_reader) { //, LocalDate loanOfDate, LocalDate returnOfDate) {
         this.id = id;
-        this.loanOfDate = loanOfDate;
-        this.returnOfDate = returnOfDate;
+        this.id_copy = id_copy;
+        this.id_reader = id_reader;
+//        this.loanOfDate = loanOfDate;
+//        this.returnOfDate = returnOfDate;
     }
 
     public Long getId() {
@@ -23,20 +29,20 @@ public class LoanDto {
         this.id = id;
     }
 
-    public Copy getCopy() {
-        return copy;
+    public CopyDto getCopyDto() {
+        return copyDto;
     }
 
-    public void setCopy(Copy copy) {
-        this.copy = copy;
+    public void setCopyDto(CopyDto copyDto) {
+        this.copyDto = copyDto;
     }
 
-    public Reader getReader() {
-        return reader;
+    public ReaderDto getReaderDto() {
+        return readerDto;
     }
 
-    public void setReader(Reader reader) {
-        this.reader = reader;
+    public void setReaderDto(ReaderDto readerDto) {
+        this.readerDto = readerDto;
     }
 
     public LocalDate getLoanOfDate() {
@@ -53,5 +59,21 @@ public class LoanDto {
 
     public void setReturnOfDate(LocalDate returnOfDate) {
         this.returnOfDate = returnOfDate;
+    }
+
+    public Long getId_copy() {
+        return id_copy;
+    }
+
+    public void setId_copy(Long id_copy) {
+        this.id_copy = id_copy;
+    }
+
+    public Long getId_reader() {
+        return id_reader;
+    }
+
+    public void setId_reader(Long id_reader) {
+        this.id_reader = id_reader;
     }
 }

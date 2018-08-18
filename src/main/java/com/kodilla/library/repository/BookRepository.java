@@ -20,6 +20,8 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     @Override
     Optional<Book> findById(Long id);
 
+    Optional<Book> findByTitle(String title);
+
     @Override
     void deleteById(Long id);
 

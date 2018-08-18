@@ -11,18 +11,21 @@ import java.util.stream.Collectors;
 public class CopyMapper {
     public Copy mapToCopy(final CopyDto copyDto) {
         return new Copy(
-                copyDto.getStatus());
+                copyDto.getId(),
+                copyDto.getStatus(),
+                copyDto.getTitle());
     }
 
     public CopyDto mapToCopyDto(final Copy copy) {
         return new CopyDto(
                 copy.getId(),
-                copy.getStatus());
+                copy.getStatus(),
+                copy.getTitle());
     }
 
     public List<CopyDto> mapToCopyDtoList(final List<Copy> copyList) {
         return copyList.stream()
-                .map(t -> new CopyDto(t.getId(), t.getStatus()))
+                .map(t -> new CopyDto(t.getId(), t.getStatus(), t.getTitle()))
                 .collect(Collectors.toList());
     }
 }

@@ -1,14 +1,8 @@
 package com.kodilla.library.controller;
 
-import com.kodilla.library.domain.CopyDto;
 import com.kodilla.library.domain.LoanDto;
-import com.kodilla.library.domain.ReaderDto;
-import com.kodilla.library.mapper.CopyMapper;
 import com.kodilla.library.mapper.LoanMapper;
-import com.kodilla.library.mapper.ReaderMapper;
-import com.kodilla.library.service.DbServiceCopy;
 import com.kodilla.library.service.DbServiceLoan;
-import com.kodilla.library.service.DbServiceReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,18 +18,6 @@ public class LoanController {
 
     @Autowired
     private LoanMapper loanMapper;
-
-    @Autowired
-    private DbServiceReader dbServiceReader;
-
-    @Autowired
-    private ReaderMapper readerMapper;
-
-    @Autowired
-    private DbServiceCopy dbServiceCopy;
-
-    @Autowired
-    private CopyMapper copyMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "getLoans")
     public List<LoanDto> getLoans() {
@@ -58,9 +40,7 @@ public class LoanController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createLoan", consumes = APPLICATION_JSON_VALUE)
-    public void createLoan(@RequestBody LoanDto loanDto, @RequestBody CopyDto copyDto, @RequestBody ReaderDto readerDto) {
+    public void createLoan(@RequestBody LoanDto loanDto) {
         dbServiceLoan.saveLoan(loanMapper.mapToLoan(loanDto));
-        dbServiceCopy.saveCopy(copyMapper.mapToCopy(copyDto));
-        dbServiceReader.saveReader(readerMapper.mapToReader(readerDto));
     }
 }

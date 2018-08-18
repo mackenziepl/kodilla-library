@@ -39,7 +39,7 @@ public class LoanRepositoryTest {
         //Given
         Reader reader = new Reader("James", "Bond");
         Book book = new Book("Potop", "Henryk Sienkiewicz", 2000);
-        Copy copy = new Copy("In library");
+        Copy copy = new Copy(1L, "In library", "Potop");
 
         Loan loan = new Loan();
         loan.setReader(reader);
@@ -64,7 +64,7 @@ public class LoanRepositoryTest {
         //Given
         Reader reader = new Reader("James", "Bond");
         Book book = new Book("Potop", "Henryk Sienkiewicz", 2000);
-        Copy copy = new Copy("In library");
+        Copy copy = new Copy(1L, "In library", "Potop");
 
         Loan loan = new Loan();
         loan.setReader(reader);

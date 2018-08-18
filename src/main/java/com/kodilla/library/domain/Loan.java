@@ -11,10 +11,16 @@ public class Loan {
     private Long id;
     private Copy copy;
     private Reader reader;
+    private Long id_copy;
+    private Long id_reader;
     private LocalDate loanOfDate = LocalDate.now();
     private LocalDate returnOfDate;
 
-    public Loan() {
+    public Loan() {}
+
+    public Loan(Long id_copy, Long id_reader) {
+        this.id_copy = id_copy;
+        this.id_reader = id_reader;
     }
 
     @Id
@@ -66,6 +72,24 @@ public class Loan {
 
     public void setReturnOfDate(LocalDate returnOfDate) {
         this.returnOfDate = returnOfDate;
+    }
+
+    @Transient
+    public Long getId_copy() {
+        return id_copy;
+    }
+
+    public void setId_copy(Long id_copy) {
+        this.id_copy = id_copy;
+    }
+
+    @Transient
+    public Long getId_reader() {
+        return id_reader;
+    }
+
+    public void setId_reader(Long id_reader) {
+        this.id_reader = id_reader;
     }
 }
 

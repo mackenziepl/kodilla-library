@@ -1,7 +1,6 @@
 package com.kodilla.library.controller;
 
 import com.kodilla.library.domain.BookDto;
-import com.kodilla.library.domain.CopyDto;
 import com.kodilla.library.mapper.BookMapper;
 import com.kodilla.library.mapper.CopyMapper;
 import com.kodilla.library.service.DbServiceBook;
@@ -38,6 +37,11 @@ public class BookController {
         return bookMapper.mapToBookDto(dbServiceBook.getBook(bookId).orElseThrow(ObjectNotFoundException::new));
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "getBookTitle")
+    public BookDto getBookTitle(@RequestParam String bookTitle) throws ObjectNotFoundException {
+        return bookMapper.mapToBookDto(dbServiceBook.getBookTitle(bookTitle).orElseThrow(ObjectNotFoundException::new));
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteBook")
     public void deleteBook(@RequestParam Long bookId) {
         dbServiceBook.deleteBook(bookId);
@@ -49,8 +53,7 @@ public class BookController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createBook", consumes = APPLICATION_JSON_VALUE)
-    public void createBook(@RequestBody BookDto bookDto, @RequestBody CopyDto copyDto) {
+    public void createBook(@RequestBody BookDto bookDto) {
         dbServiceBook.saveBook(bookMapper.mapToBook(bookDto));
-        dbServiceCopy.saveCopy(copyMapper.mapToCopy(copyDto));
     }
 }

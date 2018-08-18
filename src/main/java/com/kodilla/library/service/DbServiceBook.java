@@ -21,6 +21,10 @@ public class DbServiceBook {
         return bookRepository.findById(id);
     }
 
+    public Optional<Book> getBookTitle(String title) {
+        return bookRepository.findByTitle(title);
+    }
+
     public Book saveBook(final Book book) {
         return bookRepository.save(book);
     }

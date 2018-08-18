@@ -3,13 +3,15 @@ package com.kodilla.library.domain;
 public class CopyDto {
     private Long id;
     private String status;
-    private Book book;
+    private BookDto bookDto;
+    private String title;
 
     public CopyDto() {}
 
-    public CopyDto(Long id, String status) {
+    public CopyDto(Long id, String status, String title) {
         this.id = id;
         this.status = status;
+        this.title = title;
     }
 
     public Long getId() {
@@ -28,11 +30,19 @@ public class CopyDto {
         this.status = status;
     }
 
-    public Book getBook() {
-        return book;
+    public BookDto getBookDto() {
+        return bookDto;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBookDto(BookDto bookDto) {
+        this.bookDto = bookDto;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

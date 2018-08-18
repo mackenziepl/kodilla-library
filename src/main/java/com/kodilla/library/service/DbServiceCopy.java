@@ -1,6 +1,8 @@
 package com.kodilla.library.service;
 
+import com.kodilla.library.domain.Book;
 import com.kodilla.library.domain.Copy;
+import com.kodilla.library.repository.BookRepository;
 import com.kodilla.library.repository.CopyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class DbServiceCopy {
     @Autowired
     CopyRepository copyRepository;
 
+    @Autowired
+    BookRepository bookRepository;
+
     public List<Copy> getAllCopies() {
         return copyRepository.findAll();
     }
@@ -21,7 +26,30 @@ public class DbServiceCopy {
         return copyRepository.findById(id);
     }
 
-    public Copy saveCopy(final Copy copy) {
+    public Copy saveCopy(final Copy copy)
+    {
+        Optional<Book> bookOptional = bookRepository.findByTitle(copy.getTitle());
+        Book book = bookOptional.get();
+        copy.setBook(book);
+
+        return copyRepository.save(copy);
+    }
+
+    public Copy saveCopy2(final Copy copy)
+    {
+        Optional<Book> bookOptional = bookRepository.findByTitle(copy.getTitle());
+
+        if(!bookOptional.isPresent()) {
+            //Book book = new Book(copy.getTitle(), copy.getAuthor(), copy.getYearOfPublication());
+            //copy.setBook(book);
+            //bookRepository.save(book);
+
+            System.out.println("That title hasn't in the base");
+        } else {
+            Book book = bookOptional.get();
+            copy.setBook(book);
+        }
+
         return copyRepository.save(copy);
     }
 
