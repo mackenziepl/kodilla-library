@@ -8,17 +8,17 @@ public class LoanDto {
     private ReaderDto readerDto;
     private Long id_copy;
     private Long id_reader;
+    private String returned;
     private LocalDate loanOfDate = LocalDate.now();
     private LocalDate returnOfDate;
 
     public LoanDto() {}
 
-    public LoanDto(Long id, Long id_copy, Long id_reader) { //, LocalDate loanOfDate, LocalDate returnOfDate) {
+    public LoanDto(Long id, Long id_copy, Long id_reader, String returned) {
         this.id = id;
         this.id_copy = id_copy;
         this.id_reader = id_reader;
-//        this.loanOfDate = loanOfDate;
-//        this.returnOfDate = returnOfDate;
+        this.returned = returned;
     }
 
     public Long getId() {
@@ -75,5 +75,13 @@ public class LoanDto {
 
     public void setId_reader(Long id_reader) {
         this.id_reader = id_reader;
+    }
+
+    public String getReturned() {
+        return returned;
+    }
+
+    public void setReturned(String returned) {
+        this.returned = returned;
     }
 }

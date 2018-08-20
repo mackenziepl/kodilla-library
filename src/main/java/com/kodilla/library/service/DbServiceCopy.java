@@ -26,6 +26,14 @@ public class DbServiceCopy {
         return copyRepository.findById(id);
     }
 
+    public Long getCopiesInLibraryForTitle (String title, String status) {
+        List<Copy> copies = copyRepository.findByStatus(title);
+                Long quantity = copies.stream()
+                        .filter(s -> s.getStatus().equals(status))
+                        .count();
+        return quantity;
+    }
+
     public Copy saveCopy(final Copy copy)
     {
         Optional<Book> bookOptional = bookRepository.findByTitle(copy.getTitle());

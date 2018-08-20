@@ -13,14 +13,17 @@ public class Loan {
     private Reader reader;
     private Long id_copy;
     private Long id_reader;
+    private String returned;
     private LocalDate loanOfDate = LocalDate.now();
     private LocalDate returnOfDate;
 
     public Loan() {}
 
-    public Loan(Long id_copy, Long id_reader) {
+    public Loan(Long id, Long id_copy, Long id_reader, String returned) {
+        this.id = id;
         this.id_copy = id_copy;
         this.id_reader = id_reader;
+        this.returned = returned;
     }
 
     @Id
@@ -90,6 +93,15 @@ public class Loan {
 
     public void setId_reader(Long id_reader) {
         this.id_reader = id_reader;
+    }
+
+    @Transient
+    public String getReturned() {
+        return returned;
+    }
+
+    public void setReturned(String returned) {
+        this.returned = returned;
     }
 }
 

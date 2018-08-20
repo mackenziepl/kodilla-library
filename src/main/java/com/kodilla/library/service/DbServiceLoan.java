@@ -9,6 +9,7 @@ import com.kodilla.library.repository.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,12 @@ public class DbServiceLoan {
         Optional<Copy> copyOptional = copyRepository.findById(loan.getId_copy());
         Copy copy = copyOptional.get();
         loan.setCopy(copy);
-        copy.setStatus("Loaned");
+        if(loan.getReturned().equals("No")) {
+            copy.setStatus("Loaned");
+        } else {
+            copy.setStatus("In library");
+            loan.setReturnOfDate(LocalDate.now());
+        }
         return loanRepository.save(loan);
     }
 

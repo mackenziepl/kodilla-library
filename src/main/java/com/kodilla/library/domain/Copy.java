@@ -3,6 +3,12 @@ package com.kodilla.library.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+
+//@NamedQuery(
+//        name = "Copy.getCopiesInLibraryForTitle",
+//        query = "FROM Copy WHERE title AND status"
+//)
+
 @Entity
 @Table(name = "COPIES")
 public class Copy {

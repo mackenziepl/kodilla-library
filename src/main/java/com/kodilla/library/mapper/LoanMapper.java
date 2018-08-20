@@ -11,22 +11,23 @@ import java.util.stream.Collectors;
 public class LoanMapper {
     public Loan mapToLoan(final LoanDto loanDto) {
         return new Loan(
+                loanDto.getId(),
                 loanDto.getId_copy(),
-                loanDto.getId_reader());
+                loanDto.getId_reader(),
+                loanDto.getReturned());
     }
 
     public LoanDto mapToLoanDto(final Loan loan) {
         return new LoanDto(
                 loan.getId(),
                 loan.getId_copy(),
-                loan.getId_reader());
-//                loan.getLoanOfDate(),
-//                loan.getReturnOfDate());
+                loan.getId_reader(),
+                loan.getReturned());
     }
 
     public List<LoanDto> mapToLoanDtoList(final List<Loan> loanList) {
         return loanList.stream()
-                .map(t -> new LoanDto(t.getId(), t.getId_copy(), t.getId_reader())) //, t.getLoanOfDate(), t.getReturnOfDate()))
+                .map(t -> new LoanDto(t.getId(), t.getId_copy(), t.getId_reader(), t.getReturned()))
                 .collect(Collectors.toList());
     }
 

@@ -1,9 +1,7 @@
 package com.kodilla.library.controller;
 
 import com.kodilla.library.domain.CopyDto;
-import com.kodilla.library.mapper.BookMapper;
 import com.kodilla.library.mapper.CopyMapper;
-import com.kodilla.library.service.DbServiceBook;
 import com.kodilla.library.service.DbServiceCopy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +17,7 @@ public class CopyController {
     private DbServiceCopy dbServiceCopy;
 
     @Autowired
-    private DbServiceBook dbServiceBook;
-
-    @Autowired
     private CopyMapper copyMapper;
-
-    @Autowired
-    private BookMapper bookMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "getCopies")
     public List<CopyDto> getCopies() {

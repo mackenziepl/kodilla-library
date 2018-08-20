@@ -28,4 +28,8 @@ public interface CopyRepository extends CrudRepository<Copy, Long> {
 
     @Override
     long count();
+
+//    @Query
+//    Long getCopiesInLibraryForTitle(@Param("TITLE") String title, @Param("STATUS") String status);
+
 }
