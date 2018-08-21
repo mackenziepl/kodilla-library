@@ -4,10 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
-//@NamedQuery(
-//        name = "Copy.getCopiesInLibraryForTitle",
-//        query = "FROM Copy WHERE title AND status"
-//)
+@NamedQuery(
+        name = "Copy.getCopiesInLibraryForTitle",
+        query = "FROM Copy WHERE status = 'In library' AND tiltle LIKE CONCAT('%', :ARG ,'%')"
+)
 
 @Entity
 @Table(name = "COPIES")

@@ -1,7 +1,9 @@
 package com.kodilla.library.repository;
 
 import com.kodilla.library.domain.Copy;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -29,7 +31,7 @@ public interface CopyRepository extends CrudRepository<Copy, Long> {
     @Override
     long count();
 
-//    @Query
-//    Long getCopiesInLibraryForTitle(@Param("TITLE") String title, @Param("STATUS") String status);
+    @Query
+    Long getCopiesInLibraryForTitle(@Param("TITLE") String title, @Param("STATUS") String status);
 
 }
